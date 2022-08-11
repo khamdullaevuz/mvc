@@ -5,3 +5,4 @@ spl_autoload_register(function($class){
 });
 
 require '../routes/web.php';
+require '../config/core.php';
