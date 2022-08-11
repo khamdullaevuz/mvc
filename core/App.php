@@ -11,7 +11,6 @@ class App{
             $route = $routes[$request];
             $controllerName = $route[0];
             $function = $route[1];
-            require '../'.$controllerName.'.php';
             $controller = new $controllerName();
             $controller->$function();
         }else{
