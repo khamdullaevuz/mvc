@@ -1,7 +1,7 @@
 <?php
 
 namespace Core;
-use PDO;
+use \PDO;
 
 class Model extends Connection
 {
