@@ -9,7 +9,7 @@ class Model extends Connection
 
     public function selectAll(): array
     {
-        $statement = $this->pdo->prepare("select * from {$this->table}");
+        $statement = parent::$pdo->prepare("select * from {$this->table}");
 
         $statement->execute();
 

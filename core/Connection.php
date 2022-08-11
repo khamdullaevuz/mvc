@@ -7,12 +7,19 @@ use PDOException;
 
 class Connection
 {
-    protected PDO $pdo;
+    protected static PDO $pdo;
 
-    public function __construct()
+    function __construct()
+    {
+        if(empty(self::$pdo)){
+            self::connect();
+        }
+    }
+
+    public static function connect()
     {
         try {
-            $this->pdo = new PDO(
+            self::$pdo = new PDO(
                 'mysql:host=' . HOSTNAME . ';dbname=' . DBNAME,
                 USERNAME,
                 PASSWORD,

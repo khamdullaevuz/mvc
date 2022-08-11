@@ -18,5 +18,8 @@
             "routes/web.php"
         ]
     },
-    "require": {}
+    "require": {
+        "php": ">=7.4",
+        "ext-pdo": "*"
+    }
 }
