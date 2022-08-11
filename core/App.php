@@ -9,6 +9,7 @@ class App{
     {
         $routes = Router::get();
         $request = Request::get();
+        new Connection();
         if(array_key_exists($request, $routes)){
             $route = $routes[$request];
             if(is_array($route)) {

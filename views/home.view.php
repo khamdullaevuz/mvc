@@ -15,8 +15,8 @@ use Core\Debug;
   ?>
   <div class="container">
   <?php
-  /** @var array $values */
-  Debug::dumpData($values);
+  /** @var array $users */
+  Debug::dumpData($users);
   ?>
   </div>
   <?php

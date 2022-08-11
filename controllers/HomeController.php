@@ -3,12 +3,14 @@
 namespace Controllers;
 
 use Core\Controller;
+use Models\Users;
 
 class HomeController extends Controller
 {
     public function __invoke(): void
     {
-        $values = ['helloFromController'=>"Hello World"];
-        $this->view('home', compact('values'));
+        $user = new Users();
+        $users = $user->getUsers();
+        $this->view('home', compact('users'));
     }
 }
