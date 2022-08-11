@@ -16,7 +16,7 @@ class Connection
         }
     }
 
-    public static function connect()
+    public static function connect(): void
     {
         try {
             self::$pdo = new PDO(
