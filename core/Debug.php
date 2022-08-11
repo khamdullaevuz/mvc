@@ -4,7 +4,7 @@ namespace Core;
 
 class Debug
 {
-    public static function dumpData($data, bool $exit = false): void
+    public static function dumpData($data, bool $exit = true): void
     {
         echo '<pre>';
         var_dump($data);

@@ -7,23 +7,37 @@ class App{
 
     function run(): void
     {
-        $routes = Router::get();
+        $routes = Router::routeAll();
         $request = Request::get();
         if(array_key_exists($request, $routes)){
             $route = $routes[$request];
-            if(is_array($route)) {
-                $controllerName = $route[0];
-                $function = $route[1];
-                $controller = new $controllerName();
-                $controller->$function();
-            } else {
-                $controllerName = $route;
-                $controller = new $controllerName();
-                $controller->__invoke();
+            if($route['type'] == Request::getRequestMethod()) {
+                $route = $route['controller'];
+                Http::responseCode(200);
+                if (is_array($route)) {
+                    $controllerName = $route[0];
+                    $function = $route[1];
+                    $controller = new $controllerName();
+                    $controller->$function();
+                } else {
+                    $controllerName = $route;
+                    $controller = new $controllerName();
+                    $controller->__invoke();
+                }
+            }else{
+                Http::responseCode(405);
+                $error = '405 method not allowed';
+                require '../views/error.view.php';
             }
         }else{
+            Http::responseCode(404);
             $error = '404 not found';
             require '../views/error.view.php';
+        }
+        if($this->debug){
+            ini_set('display_errors', 1);
+        }else{
+            ini_set('display_errors', 0);
         }
     }
 
@@ -31,10 +45,8 @@ class App{
     {
         if($action){
             $this->debug = true;
-            ini_set('display_errors', 1);
         }else{
             $this->debug = false;
-            ini_set('display_errors', 0);
         }
     }
 
