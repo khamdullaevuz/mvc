@@ -1,6 +1,6 @@
 <?php
 
-require '../core/autoload.php';
+require '../vendor/autoload.php';
 
 use Core\App;
 

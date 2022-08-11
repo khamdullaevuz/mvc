@@ -1,0 +1,21 @@
+{
+    "name": "khamdullaevuz/mvc",
+    "type": "project",
+    "authors": [
+        {
+            "name": "khamdullaevuz",
+            "email": "elbek.khamdullaev@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Core\\": "core/",
+            "Controllers\\": "controllers/"
+        },
+        "files": [
+            "config/core.php",
+            "routes/web.php"
+        ]
+    },
+    "require": {}
+}
