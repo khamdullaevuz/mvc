@@ -4,9 +4,7 @@ class Controller
 {
     public function view(string $view, array $options): void
     {
-        foreach($options as $key => $option){
-            $$key = $option;
-        }
+        extract($options);
         require '../views/'.$view.'.view.php';
     }
 }
