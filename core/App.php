@@ -1,5 +1,7 @@
 <?php
 
+namespace Core;
+
 class App{
     function run(): void
     {
@@ -10,6 +12,7 @@ class App{
             $controllerName = $route[0];
             $function = $route[1];
             require '../controllers/'.$controllerName.'.php';
+            $controllerName = '\Controllers\\'.$controllerName;
             $controller = new $controllerName();
             $controller->$function();
         }else{
