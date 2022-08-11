@@ -1,3 +1,3 @@
 <?php
 
-const APP_NAME = 'MVC';
+$config['appname'] = "MVC";

@@ -8,14 +8,14 @@
         }
     ],
     "autoload": {
-        "psr-4": {
-            "Core\\": "core/",
-            "Controllers\\": "controllers/"
-        },
         "files": [
             "config/core.php",
             "routes/web.php"
-        ]
+        ],
+        "psr-4": {
+            "Core\\": "core/",
+            "Controllers\\": "controllers/"
+        }
     },
     "require": {}
 }
