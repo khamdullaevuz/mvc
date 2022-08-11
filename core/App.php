@@ -8,11 +8,10 @@ class App{
         $routes = Router::get();
         $request = trim($_SERVER['REQUEST_URI'], "/");
         if(array_key_exists($request, $routes)){
-            $route = explode('@', $routes[$request]);
+            $route = $routes[$request];
             $controllerName = $route[0];
             $function = $route[1];
-            require '../controllers/'.$controllerName.'.php';
-            $controllerName = '\Controllers\\'.$controllerName;
+            require '../'.$controllerName.'.php';
             $controller = new $controllerName();
             $controller->$function();
         }else{

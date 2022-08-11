@@ -1,6 +1,8 @@
 <?php
 
 use Core\Router;
+use Controllers\HomeController;
+//use Controllers\AboutController;
 
-Router::register('', 'HomeController@index');
-Router::register('about', 'AboutController@index');
+Router::register('', [HomeController::class, 'index']);
+Router::register('about', [\Controllers\AboutController::class, 'index']);
