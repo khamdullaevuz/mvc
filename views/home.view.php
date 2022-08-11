@@ -1,3 +1,6 @@
+<?php
+use Core\Debug;
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,8 +15,8 @@
   ?>
   <div class="container">
   <?php
-  /** @var string $helloFromController */
-  echo $helloFromController;
+  /** @var array $values */
+  Debug::dumpData($values);
   ?>
   </div>
   <?php

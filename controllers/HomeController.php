@@ -8,6 +8,7 @@ class HomeController extends Controller
 {
     public function __invoke(): void
     {
-        $this->view('home', ['helloFromController'=>"Hello World"]);
+        $values = ['helloFromController'=>"Hello World"];
+        $this->view('home', compact('values'));
     }
 }

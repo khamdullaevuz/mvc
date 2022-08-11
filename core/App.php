@@ -3,6 +3,8 @@
 namespace Core;
 
 class App{
+    private bool $debug = false;
+
     function run(): void
     {
         $routes = Router::get();
@@ -22,6 +24,24 @@ class App{
         }else{
             $error = '404 not found';
             require '../views/error.view.php';
+        }
+    }
+
+    public function debug(bool $action): void
+    {
+        if($action){
+            $this->debug = true;
+            ini_set('display_errors', 1);
+        }else{
+            $this->debug = false;
+            ini_set('display_errors', 0);
+        }
+    }
+
+    public function error_reporting(): void
+    {
+        if($this->debug) {
+            error_reporting(E_ALL);
         }
     }
 }
