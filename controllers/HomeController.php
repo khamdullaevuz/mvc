@@ -6,7 +6,7 @@ use Core\Controller;
 
 class HomeController extends Controller
 {
-    public function index(): void
+    public function __invoke(): void
     {
         $this->view('home', ['helloFromController'=>"Hello World"]);
     }

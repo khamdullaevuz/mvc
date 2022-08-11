@@ -4,9 +4,9 @@ namespace Core;
 
 class Router
 {
-    protected static array $routes = [];
+    private static array $routes = [];
 
-    public static function register(string $uri, array $controller): void
+    public static function register(string $uri, array | string $controller): void
     {
         self::$routes = array_merge(self::$routes, [$uri => $controller]);
     }

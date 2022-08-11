@@ -2,7 +2,7 @@
 
 use Core\Router;
 use Controllers\HomeController;
-//use Controllers\AboutController;
+use Controllers\AboutController;
 
-Router::register('', [HomeController::class, 'index']);
-Router::register('about', [\Controllers\AboutController::class, 'index']);
+Router::register('', HomeController::class);
+Router::register('about', [AboutController::class, 'about']);
