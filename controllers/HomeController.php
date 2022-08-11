@@ -10,7 +10,7 @@ class HomeController extends Controller
     public function __invoke(): void
     {
         $user = new Users();
-        $users = $user->getUsers();
+        $users = $user->selectAll();
         $this->view('home', compact('users'));
     }
 }
