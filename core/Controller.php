@@ -1,7 +1,5 @@
 <?php
 
-namespace Core;
-
 class Controller
 {
     public function view(string $view, array $options): void

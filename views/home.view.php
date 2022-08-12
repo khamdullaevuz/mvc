@@ -1,6 +1,3 @@
-<?php
-use Core\Debug;
-?>
 <!doctype html>
 <html lang="en">
   <head>

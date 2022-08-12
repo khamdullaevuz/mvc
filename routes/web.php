@@ -1,6 +1,5 @@
 <?php
 
-use Core\Router;
 use Controllers\HomeController;
 use Controllers\AboutController;
 use Controllers\TestController;

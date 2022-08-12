@@ -1,7 +1,5 @@
 <?php
 
-namespace Core;
-
 class Http
 {
     public static function responseCode(int $code): void

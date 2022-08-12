@@ -2,10 +2,9 @@
 
 namespace Controllers;
 
-use Core\Controller;
 use Models\Users;
 
-class HomeController extends Controller
+class HomeController extends \Controller
 {
     public function __invoke(): void
     {

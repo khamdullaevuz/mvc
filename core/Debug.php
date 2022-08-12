@@ -1,7 +1,5 @@
 <?php
 
-namespace Core;
-
 class Debug
 {
     public static function dumpData($data, bool $exit = true): void

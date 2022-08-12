@@ -1,8 +1,5 @@
 <?php
 
-namespace Core;
-use PDO;
-
 class Model extends Connection
 {
     protected string $table;

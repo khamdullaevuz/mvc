@@ -1,10 +1,5 @@
 <?php
 
-namespace Core;
-
-use PDO;
-use PDOException;
-
 class Connection
 {
     protected static PDO $pdo;

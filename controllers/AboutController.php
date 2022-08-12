@@ -2,9 +2,7 @@
 
 namespace Controllers;
 
-use Core\Controller;
-
-class AboutController extends Controller
+class AboutController extends \Controller
 {
     public function about(): void
     {

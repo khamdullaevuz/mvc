@@ -1,7 +1,5 @@
 <?php
 
-namespace Core;
-
 class App{
     private bool $debug = false;
 
