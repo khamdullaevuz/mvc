@@ -6,7 +6,7 @@ class App{
     function run(): void
     {
         $routes = Router::routeAll();
-        $request = Request::getRequestUri();
+        $request = Request::getRequestUrl();
         if(array_key_exists($request, $routes)){
             $route = $routes[$request];
             if($route['type'] == Request::getRequestMethod()) {
