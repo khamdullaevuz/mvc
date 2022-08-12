@@ -7,6 +7,8 @@
             "email": "elbek.khamdullaev@gmail.com"
         }
     ],
+    "license": "MIT",
+    "minimum-stability": "dev",
     "autoload": {
         "classmap": ["core"],
         "psr-4": {
