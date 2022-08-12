@@ -20,6 +20,7 @@
     },
     "require": {
         "php": ">=8.0",
-        "ext-pdo": "*"
+        "ext-pdo": "*",
+        "phpunit/phpunit": "^9.5"
     }
 }
