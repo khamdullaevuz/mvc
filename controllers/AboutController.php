@@ -3,8 +3,6 @@
 namespace Controllers;
 
 use Core\Controller;
-use Core\Debug;
-use Core\Request;
 
 class AboutController extends Controller
 {

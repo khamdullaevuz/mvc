@@ -3,7 +3,6 @@
 namespace Controllers;
 
 use Core\Debug;
-use Core\Request;
 
 class LoginController
 {
