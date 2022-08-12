@@ -6,6 +6,6 @@ class AboutController extends \Controller
 {
     public function about(): void
     {
-        $this->view('about', ['helloFromController'=>"About"]);
+        $this->view('about', ['data'=>"About"]);
     }
 }

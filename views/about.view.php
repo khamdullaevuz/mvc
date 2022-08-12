@@ -13,8 +13,8 @@ require 'layouts/header.layout.php';
 ?>
 <div class="container">
 <?php
-/** @var string $helloFromController */
-echo $helloFromController;
+/** @var string $data */
+echo $data;
 ?>
 </div>
 <?php

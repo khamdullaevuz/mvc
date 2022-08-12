@@ -2,14 +2,14 @@
 
 namespace Controllers;
 
-use Models\Users;
+use Models\Product;
 
 class HomeController extends \Controller
 {
     public function __invoke(): void
     {
-        $user = new Users();
-        $users = $user->selectOne('id', 1);
-        $this->view('home', compact('users'));
+        $product = new Product();
+        $products = $product->selectAllData();
+        $this->view('home', compact('products'));
     }
 }

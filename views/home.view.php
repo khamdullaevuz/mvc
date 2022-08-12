@@ -13,8 +13,10 @@
   ?>
   <div class="container">
   <?php
-  /** @var array $users */
-  Debug::dumpData($users);
+  /** @var array $products */
+  foreach($products as $product){
+      echo $product['name'].PHP_EOL;
+  }
   ?>
   </div>
   <?php
