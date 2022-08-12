@@ -33,4 +33,9 @@ class Router
     {
         return self::$routes;
     }
+
+    public static function currentRoute(string $route): bool
+    {
+        return Request::getRequestUrl() == $route;
+    }
 }
