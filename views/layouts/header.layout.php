@@ -7,10 +7,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link <?=Router::currentRoute('') ? 'active' : ''?>" aria-current="page" href="/">Home</a>
+          <a class="nav-link<?=Router::currentRoute('') ? ' active' : ''?>" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <?=Router::currentRoute('about') ? 'active' : ''?>" href="/about">About</a>
+          <a class="nav-link<?=Router::currentRoute('about') ? ' active' : ''?>" href="/about">About</a>
         </li>
     </div>
   </div>
