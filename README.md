@@ -1,16 +1,17 @@
 # mvc
 ### simple mvc project
-
 # Usage
-
-## Clone repository
-
+## Using git
+### Clone repository
 ```shell
 git clone https://github.com/khamdullaevuz/mvc
 ```
-
-## Dump autoloader
-
+### Dump autoloader
 ```shell
 composer dump-autoload
+```
+## Using composer
+### Create project
+```shell
+composer create-project khamdullaevuz/mvc
 ```
