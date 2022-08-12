@@ -9,8 +9,8 @@
 git clone https://github.com/khamdullaevuz/mvc
 ```
 
-## Install packages
+## Dump autoloader
 
 ```shell
-composer install
+composer dump-autoload
 ```
