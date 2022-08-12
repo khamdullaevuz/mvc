@@ -3,6 +3,8 @@
 namespace Controllers;
 
 use Core\Controller;
+use Core\Debug;
+use Core\Request;
 use Models\Users;
 
 class HomeController extends Controller

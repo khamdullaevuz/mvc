@@ -8,7 +8,7 @@ class App{
     function run(): void
     {
         $routes = Router::routeAll();
-        $request = Request::get();
+        $request = Request::getRequestUri();
         if(array_key_exists($request, $routes)){
             $route = $routes[$request];
             if($route['type'] == Request::getRequestMethod()) {
@@ -18,11 +18,11 @@ class App{
                     $controllerName = $route[0];
                     $function = $route[1];
                     $controller = new $controllerName();
-                    $controller->$function();
+                    call_user_func([$controller, $function], Request::getParams());
                 } else {
                     $controllerName = $route;
                     $controller = new $controllerName();
-                    $controller->__invoke();
+                    call_user_func([$controller, '__invoke'], Request::getParams());
                 }
             }else{
                 Http::responseCode(405);
