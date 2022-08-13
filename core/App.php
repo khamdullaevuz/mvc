@@ -3,10 +3,6 @@
 class App{
     private bool $debug = false;
 
-    /**
-     * @throws ErrorException
-     */
-
     function run(): void
     {
         $routes = Router::routeAll();
