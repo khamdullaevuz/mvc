@@ -1,6 +1,6 @@
 <?php
 
-class Model extends Connection
+abstract class Model extends Connection
 {
     protected string $table;
 
@@ -75,7 +75,6 @@ class Model extends Connection
             }
         }
 
-        $query = str_replace('{values}', $values, $query);
-        return $query;
+        return str_replace('{values}', $values, $query);
     }
 }

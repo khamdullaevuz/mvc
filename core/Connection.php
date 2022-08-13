@@ -1,6 +1,6 @@
 <?php
 
-class Connection
+abstract class Connection
 {
     protected static PDO $pdo;
 
