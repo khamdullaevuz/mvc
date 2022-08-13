@@ -9,7 +9,7 @@ class HomeController extends \Controller
     public function __invoke(): void
     {
         $product = new Product();
-        $products = $product->selectAllData();
+        $products = $product->selectAll(['name'=>"Apple"]);
         $this->view('home', compact('products'));
     }
 }
