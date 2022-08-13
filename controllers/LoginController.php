@@ -4,8 +4,8 @@ namespace Controllers;
 
 class LoginController
 {
-    public function __invoke($data): void
+    public function __invoke($id, $email): void
     {
-        \Debug::dumpData($data);
+        echo $id.PHP_EOL.$email;
     }
 }

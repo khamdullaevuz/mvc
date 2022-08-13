@@ -16,11 +16,12 @@ class App{
                     $controllerName = $route[0];
                     $function = $route[1];
                     $controller = new $controllerName();
-                    call_user_func([$controller, $function], Request::getParams());
+
+                    call_user_func_array([$controller, $function], Request::getParams());
                 } else {
                     $controllerName = $route;
                     $controller = new $controllerName();
-                    call_user_func([$controller, '__invoke'], Request::getParams());
+                    call_user_func_array([$controller, '__invoke'], Request::getParams());
                 }
             }else{
                 Http::responseCode(405);
