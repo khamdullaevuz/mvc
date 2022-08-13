@@ -3,6 +3,10 @@
 class App{
     private bool $debug = false;
 
+    /**
+     * @throws ErrorException
+     */
+
     function run(): void
     {
         $routes = Router::routeAll();
@@ -11,27 +15,34 @@ class App{
             $route = $routes[$request];
             if($route['type'] == Request::getRequestMethod()) {
                 $route = $route['controller'];
-                Http::responseCode(200);
-                if (is_array($route)) {
-                    $controllerName = $route[0];
-                    $function = $route[1];
-                    $controller = new $controllerName();
-
-                    call_user_func_array([$controller, $function], Request::getParams());
-                } else {
-                    $controllerName = $route;
-                    $controller = new $controllerName();
-                    call_user_func_array([$controller, '__invoke'], Request::getParams());
+                try {
+                    if (is_array($route)) {
+                        $controllerName = $route[0];
+                        $function = $route[1];
+                        $controller = new $controllerName();
+                        call_user_func_array([$controller, $function], Request::getParams());
+                    } else {
+                        $controllerName = $route;
+                        $controller = new $controllerName();
+                        call_user_func_array([$controller, '__invoke'], Request::getParams());
+                    }
+                    Http::responseCode(200);
+                } catch (Error $e){
+                    if(mb_stripos($e->getMessage(),'Too few arguments to function') !== false){
+                        $error = 'Missing required parameters';
+                        require '../views/error.view.php';
+                        Http::responseCode(400);
+                    }
                 }
             }else{
-                Http::responseCode(405);
                 $error = '405 method not allowed';
                 require '../views/error.view.php';
+                Http::responseCode(405);
             }
         }else{
-            Http::responseCode(404);
             $error = '404 not found';
             require '../views/error.view.php';
+            Http::responseCode(404);
         }
         if($this->debug){
             ini_set('display_errors', 1);
