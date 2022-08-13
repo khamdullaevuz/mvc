@@ -2,7 +2,7 @@
 
 namespace Controllers;
 
-class TestController
+class TestController extends \Controller
 {
     public function __invoke(): void
     {

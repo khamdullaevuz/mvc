@@ -2,7 +2,7 @@
 
 namespace Controllers;
 
-class LoginController
+class LoginController extends \Controller
 {
     public function __invoke($id, $email): void
     {
