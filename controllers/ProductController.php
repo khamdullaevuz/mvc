@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use Models\Product;
+use Request;
 
 class ProductController extends \Controller
 {
@@ -41,7 +42,7 @@ class ProductController extends \Controller
 
     public function insert(): void
     {
-        $data = \Request::getPost();
+        $data = Request::getPost();
         $product = new Product();
         $id = $product->add($data);
         $this->redirect('product/show', ['id'=>$id]);
@@ -50,7 +51,7 @@ class ProductController extends \Controller
     public function put(int $id): void
     {
         $product = new Product();
-        $data = \Request::getPost();
+        $data = Request::getPost();
         unset($data['_method']);
         $product->update($data, ['id'=>$id]);
         $this->redirect('product/show', ['id'=>$id]);
