@@ -35,11 +35,12 @@ abstract class Model extends Connection
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function add(array $values): void
+    public function add(array $values): string|bool
     {
         $query = "INSERT INTO {$this->table} ({keys}) VALUES ({values})";
         $query = $this->generateKey($values, $query);
         parent::$pdo->prepare($query)->execute($values);
+        return parent::$pdo->lastInsertId();
     }
 
     public function update(array $values, array $where): void

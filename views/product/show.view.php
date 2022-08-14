@@ -12,7 +12,9 @@
 require __DIR__.'/../layouts/header.layout.php';
 ?>
 <div class="container">
-    <h1>Products</h1>
+    <h1>Product</h1>
+    <h3><?= /** @var array $product */
+        $product['name']?></h3>
 </div>
 <?php
 require __DIR__.'/../layouts/footer.layout.php';

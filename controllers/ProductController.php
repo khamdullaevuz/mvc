@@ -2,40 +2,57 @@
 
 namespace Controllers;
 
+use Models\Product;
+
 class ProductController extends \Controller
 {
     public function index(): void
     {
-        $this->view('product/index');
+        $product = new Product();
+        $products = $product->selectAllData();
+        $this->view('product/index', compact('products'));
     }
 
     public function show(int $id): void
     {
-        $this->view('product/show');
+        $product = new Product();
+        $product = $product->selectOne(['id'=>$id]);
+        $this->view('product/show', compact('product'));
     }
 
-    public function update(int $id): void
+    public function edit(int $id): void
     {
-        $this->view('product/update');
+        $product = new Product();
+        $product = $product->selectOne(['id'=>$id]);
+        $this->view('product/edit', compact('product'));
     }
 
-    public function insert(): void
+    public function add(): void
     {
         $this->view('product/add');
     }
 
     public function delete(int $id): void
     {
-        // delete
+        $product = new Product();
+        $product->delete(['id'=>$id]);
+        $this->redirect('product');
     }
 
-    public function add(int $id): void
+    public function insert(): void
     {
-        // add
+        $data = \Request::getPost();
+        $product = new Product();
+        $id = $product->add($data);
+        $this->redirect('product/show', ['id'=>$id]);
     }
 
     public function put(int $id): void
     {
-        // put
+        $product = new Product();
+        $data = \Request::getPost();
+        unset($data['_method']);
+        $product->update($data, ['id'=>$id]);
+        $this->redirect('product/show', ['id'=>$id]);
     }
 }

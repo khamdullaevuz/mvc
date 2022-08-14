@@ -4,5 +4,5 @@ namespace Models;
 
 class Product extends \Model
 {
-    protected string $table = 'product';
+    protected string $table = 'products';
 }

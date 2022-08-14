@@ -9,7 +9,7 @@ class App{
         $request = Request::getRequestUrl();
         if(array_key_exists($request, $routes)){
             $route = $routes[$request];
-            if($route['type'] == Request::getRequestMethod()) {
+            if($route['type'] == Request::getRequestMethod() or ($route['type'] == Request::getPost()['_method'] and Request::getRequestMethod() == "POST")) {
                 $route = $route['controller'];
                 try {
                     if (is_array($route)) {

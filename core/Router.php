@@ -36,6 +36,6 @@ class Router
 
     public static function currentRoute(string $route): bool
     {
-        return Request::getRequestUrl() == $route;
+        return explode('/', Request::getRequestUrl())[0] == $route;
     }
 }

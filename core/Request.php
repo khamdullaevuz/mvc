@@ -39,4 +39,9 @@ class Request
         }
         return $result;
     }
+
+    public static function getPost(): array
+    {
+        return $_POST;
+    }
 }
