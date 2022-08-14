@@ -13,5 +13,5 @@ composer dump-autoload
 ## Using composer (for usage)
 ### Create project
 ```shell
-composer create-project khamdullaevuz/mvc:^dev-main
+composer create-project khamdullaevuz/mvc:dev-main
 ```
