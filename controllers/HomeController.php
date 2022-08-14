@@ -2,9 +2,9 @@
 
 namespace Controllers;
 
-use Models\Product;
+use Controller;
 
-class HomeController extends \Controller
+class HomeController extends Controller
 {
     public function __invoke(): void
     {

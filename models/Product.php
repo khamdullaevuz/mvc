@@ -2,7 +2,9 @@
 
 namespace Models;
 
-class Product extends \Model
+use Model;
+
+class Product extends Model
 {
     protected string $table = 'products';
 }

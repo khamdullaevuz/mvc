@@ -2,10 +2,11 @@
 
 namespace Controllers;
 
-use Models\Product;
+use Controller;
 use Request;
+use Models\Product;
 
-class ProductController extends \Controller
+class ProductController extends Controller
 {
     public function index(): void
     {
