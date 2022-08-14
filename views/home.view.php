@@ -12,12 +12,7 @@
     require 'layouts/header.layout.php';
   ?>
   <div class="container">
-  <?php
-  /** @var array $products */
-  foreach($products as $product){
-      echo $product['name'].PHP_EOL;
-  }
-  ?>
+    <h1>Hello world</h1>
   </div>
   <?php
     require 'layouts/footer.layout.php';
