@@ -13,56 +13,57 @@ abstract class Model extends Connection
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function selectAll(array $data): array
+    public function selectAll(array $where): array
     {
-        $query = "SELECT * FROM {$this->table} WHERE {values}";
-        $query = $this->generateParam($data, $query);
+        $query = "SELECT * FROM {$this->table} WHERE {where}";
+        $query = $this->generateParam($where, $query);
         $statement = parent::$pdo->prepare($query);
 
-        $statement->execute($data);
+        $statement->execute($where);
 
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function selectOne(array $data): array
+    public function selectOne(array $where): array
     {
-        $query = "SELECT * FROM {$this->table} WHERE {values}";
-        $query = $this->generateParam($data, $query);
+        $query = "SELECT * FROM {$this->table} WHERE {where}";
+        $query = $this->generateParam($where, $query);
         $statement = parent::$pdo->prepare($query);
 
-        $statement->execute($data);
+        $statement->execute($where);
 
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function add(array $data): void
+    public function add(array $values): void
     {
-        $query = "INSERT INTO {$this->table} ({names}) VALUES ({values})";
-        $names = "";
-        $values = "";
-        foreach(array_keys($data) as $key){
-            $names .= $key.',';
-            $values .= ':'.$key.',';
-        }
-        $names = mb_substr($names, 0, -1);
-        $values = mb_substr($values, 0, -1);
-        $query = str_replace(["{names}", "{values}"], [$names, $values], $query);
+        $query = "INSERT INTO {$this->table} ({keys}) VALUES ({values})";
+        $query = $this->generateKey($values, $query);
+        parent::$pdo->prepare($query)->execute($values);
+    }
+
+    public function update(array $values, array $where): void
+    {
+        $query = "UPDATE {$this->table} SET {keys} WHERE {where}";
+        $query = $this->generateForKeyUpdate($values, $query);
+        $query = $this->generateParam($where, $query);
+        $data = array_merge($values, $where);
         parent::$pdo->prepare($query)->execute($data);
     }
 
-    public function delete(array $data): void
+    public function delete(array $where): void
     {
-        $query = "DELETE FROM {$this->table} WHERE {values}";
-        $query = $this->generateParam($data, $query);
-        parent::$pdo->prepare($query)->execute($data);
+        $query = "DELETE FROM {$this->table} WHERE {where}";
+        $query = $this->generateParam($where, $query);
+        parent::$pdo->prepare($query)->execute($where);
     }
 
     /**
      * @param array $data
      * @param string $query
-     * @return array|string|string[]
+     * @return string
      */
-    private function generateParam(array $data, string $query): string|array
+    private function generateParam(array $data, string $query): string
     {
         $values = "";
         $i = 0;
@@ -75,6 +76,39 @@ abstract class Model extends Connection
             }
         }
 
-        return str_replace('{values}', $values, $query);
+        return str_replace('{where}', $values, $query);
+    }
+
+    /**
+     * @param array $data
+     * @param string $query
+     * @return string
+     */
+    public function generateKey(array $data, string $query): string
+    {
+        $keys = "";
+        $values = "";
+        foreach (array_keys($data) as $key) {
+            $keys .= $key . ',';
+            $values .= ':' . $key . ',';
+        }
+        $keys = mb_substr($keys, 0, -1);
+        $values = mb_substr($values, 0, -1);
+        return str_replace(["{keys}", "{values}"], [$keys, $values], $query);
+    }
+
+    /**
+     * @param array $data
+     * @param string $query
+     * @return string
+     */
+    public function generateForKeyUpdate(array $data, string $query): string
+    {
+        $keys = "";
+        foreach (array_keys($data) as $key) {
+            $keys .= $key . ' = ' . ':' . $key .',';
+        }
+        $keys = mb_substr($keys, 0, -1);
+        return str_replace("{keys}", $keys, $query);
     }
 }
