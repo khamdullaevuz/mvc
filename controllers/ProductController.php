@@ -44,16 +44,26 @@ class ProductController extends Controller
     public function insert(): void
     {
         $data = Request::getFormData();
-        $product = new Product();
-        $id = $product->add($data);
-        $this->redirect('product/show', ['id'=>$id]);
+        if(!empty($data['name'])) {
+            $product = new Product();
+            $id = $product->add($data);
+            $this->redirect('product/show', ['id' => $id]);
+        }else{
+            $this->view('product/add', ['error'=>"Name is required"]);
+        }
     }
 
     public function put(int $id): void
     {
         $product = new Product();
         $data = Request::getFormData();
-        $product->update($data, ['id'=>$id]);
-        $this->redirect('product/show', ['id'=>$id]);
+        if(!empty($data['name'])) {
+            $product->update($data, ['id' => $id]);
+            $this->redirect('product/show', ['id' => $id]);
+        }else{
+            $product = $product->selectOne(['id'=>$id]);
+            $error = "Name is required";
+            $this->view('product/edit', compact('product', 'error'));
+        }
     }
 }

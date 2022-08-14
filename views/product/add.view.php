@@ -8,6 +8,7 @@ require __DIR__.'/../layouts/header.layout.php';
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
             <input name="name" type="text" class="form-control" id="name" aria-describedby="nameHelp">
+
             <?php if(!empty($error)): ?>
             <div id="nameHelp" class="form-text"><?=$error?></div>
             <?php endif; ?>
