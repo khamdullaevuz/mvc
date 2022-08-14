@@ -3,8 +3,8 @@ $title = "Products";
 require __DIR__.'/../layouts/header.layout.php';
 ?>
 <div class="container">
-    <div class="row"><div class="col-md-4"><h1>Products</h1></div><div class="col-md-4"></div><div class="col-md-4"><a
-                    href="/product/add" class="btn btn-success">Add product</a></div></div>
+    <div class="row"><div class="col-6"><h1>Products</h1></div><div class="col-5"></div><div class="col-1"><a
+                    href="/product/add" class="btn btn-success btn-lg"><i class="bi bi-plus-lg"></i></a></div></div>
     <table class="table table-striped table-hover">
         <thead>
         <tr>
