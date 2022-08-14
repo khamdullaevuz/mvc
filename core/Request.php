@@ -44,4 +44,10 @@ class Request
     {
         return $_POST;
     }
+
+    public static function getFormData(): array
+    {
+        unset($_POST['_method']);
+        return $_POST;
+    }
 }

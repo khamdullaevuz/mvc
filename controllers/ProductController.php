@@ -42,7 +42,7 @@ class ProductController extends \Controller
 
     public function insert(): void
     {
-        $data = Request::getPost();
+        $data = Request::getFormData();
         $product = new Product();
         $id = $product->add($data);
         $this->redirect('product/show', ['id'=>$id]);
@@ -51,8 +51,7 @@ class ProductController extends \Controller
     public function put(int $id): void
     {
         $product = new Product();
-        $data = Request::getPost();
-        unset($data['_method']);
+        $data = Request::getFormData();
         $product->update($data, ['id'=>$id]);
         $this->redirect('product/show', ['id'=>$id]);
     }
