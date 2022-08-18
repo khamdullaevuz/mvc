@@ -16,7 +16,6 @@
             "Models\\": "models"
         },
         "files": [
-            "config/core.php",
             "routes/web.php"
         ]
     },

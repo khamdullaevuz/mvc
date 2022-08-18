@@ -15,10 +15,10 @@ abstract class Connection
     {
         try {
             self::$pdo = new PDO(
-                'mysql:host=' . HOSTNAME . ';dbname=' . DBNAME,
-                USERNAME,
-                PASSWORD,
-                OPTIONS
+                'mysql:host=' . Config::HOSTNAME . ';dbname=' . Config::DBNAME,
+                Config::USERNAME,
+                Config::PASSWORD,
+                Config::OPTIONS
             );
         } catch (PDOException $e) {
             die($e->getMessage());
