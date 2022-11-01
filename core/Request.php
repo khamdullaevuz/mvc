@@ -21,7 +21,7 @@ class Request
     {
         $url = self::getFullUrl();
         $components = parse_url($url, PHP_URL_QUERY);
-        parse_str($components, $results);
+        parse_str($components ?? '', $results);
         return $results;
     }
 
