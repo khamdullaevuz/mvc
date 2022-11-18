@@ -27,7 +27,7 @@ class App{
                     if(mb_stripos($e->getMessage(),'Too few arguments to function') !== false){
                         $error = 'Missing required parameters';
                         require '../views/error.view.php';
-                        Http::responseCode(400);
+                        Http::responseCode(422);
                     }
                 }
             }else{
