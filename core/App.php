@@ -49,11 +49,7 @@ class App{
 
     public function debug(bool $action): void
     {
-        if($action){
-            $this->debug = true;
-        }else{
-            $this->debug = false;
-        }
+        $this->debug = $action;
     }
 
     public function error_reporting(): void
