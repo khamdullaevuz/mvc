@@ -16,7 +16,8 @@
             "Models\\": "models"
         },
         "files": [
-            "routes/web.php"
+            "routes/web.php",
+            "config/Core.php"
         ]
     },
     "require": {
