@@ -35,7 +35,7 @@ abstract class Model extends Connection
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function add(array $values): string|bool
+    public function add(array $values)
     {
         $query = "INSERT INTO {$this->table} ({keys}) VALUES ({values})";
         $query = $this->generateKey($values, $query);

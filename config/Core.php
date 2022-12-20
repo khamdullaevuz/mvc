@@ -2,6 +2,8 @@
 
 namespace Config;
 
+use PDO;
+
 class Core
 {
     const APP_NAME = "MVC";

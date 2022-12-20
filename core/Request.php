@@ -25,7 +25,7 @@ class Request
         return $results;
     }
 
-    public static function sendRequest(string $url, array $data = [], string $customRequest = 'get'): string|bool
+    public static function sendRequest(string $url, array $data = [], string $customRequest = 'get')
     {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
