@@ -10,6 +10,7 @@ class ProductController extends Controller
 {
     public function index(): void
     {
+//        $this->redirect("test");
         $product = new Product();
         $products = $product->selectAllData();
         $this->view('product/index', compact('products'));
@@ -38,7 +39,7 @@ class ProductController extends Controller
     {
         $product = new Product();
         $product->delete(['id'=>$id]);
-        $this->redirect('product');
+        $this->redirect('/products');
     }
 
     public function insert(): void
@@ -47,7 +48,7 @@ class ProductController extends Controller
         if(!empty($data['name'])) {
             $product = new Product();
             $id = $product->add($data);
-            $this->redirect('product/show', ['id' => $id]);
+            $this->redirect('/products/show', ['id' => $id]);
         }else{
             $this->view('product/add', ['error'=>"Name is required"]);
         }
@@ -59,7 +60,7 @@ class ProductController extends Controller
         $data = Request::getFormData();
         if(!empty($data['name'])) {
             $product->update($data, ['id' => $id]);
-            $this->redirect('product/show', ['id' => $id]);
+            $this->redirect('/products/show', ['id' => $id]);
         }else{
             $product = $product->selectOne(['id'=>$id]);
             $error = "Name is required";

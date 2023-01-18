@@ -4,7 +4,7 @@ require __DIR__.'/../layouts/header.layout.php';
 ?>
 <div class="container">
     <h1>Product - Add</h1>
-    <form action="/product/insert" method="POST">
+    <form action="/products/insert" method="POST">
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
             <input name="name" type="text" class="form-control" id="name" aria-describedby="nameHelp">

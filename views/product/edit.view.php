@@ -4,7 +4,7 @@ require __DIR__.'/../layouts/header.layout.php';
 ?>
 <div class="container">
     <h1>Product update - <?=$product['id']?></h1>
-    <form action="/product/put?id=<?=$product['id']?>" method="POST">
+    <form action="/products/put?id=<?=$product['id']?>" method="POST">
         <div class="mb-3">
             <input type="hidden" name="_method" value="PUT" />
             <label for="name" class="form-label">Name</label>

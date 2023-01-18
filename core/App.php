@@ -26,18 +26,18 @@ class App{
                 } catch (Error $e){
                     if(mb_stripos($e->getMessage(),'Too few arguments to function') !== false){
                         $error = 'Missing required parameters';
-                        require '../views/error.view.php';
+                        require __DIR__ . '/../views/error.view.php';
                         Http::responseCode(422);
                     }
                 }
             }else{
                 $error = '405 method not allowed';
-                require '../views/error.view.php';
+                require __DIR__ . '/../views/error.view.php';
                 Http::responseCode(405);
             }
         }else{
             $error = '404 not found';
-            require '../views/error.view.php';
+            require __DIR__ . '/../views/error.view.php';
             Http::responseCode(404);
         }
         if($this->debug){

@@ -7,10 +7,10 @@ use Controllers\ProductController;
 Router::get('', HomeController::class);
 Router::get('about', [AboutController::class, 'about']);
 
-Router::get('product', [ProductController::class, 'index']);
-Router::get('product/show', [ProductController::class, 'show']);
-Router::get('product/edit', [ProductController::class, 'edit']);
-Router::get('product/add', [ProductController::class, 'add']);
-Router::delete('product/delete', [ProductController::class, 'delete']);
-Router::post('product/insert', [ProductController::class, 'insert']);
-Router::put('product/put', [ProductController::class, 'put']);
+Router::get('products', [ProductController::class, 'index']);
+Router::get('products/show', [ProductController::class, 'show']);
+Router::get('products/edit', [ProductController::class, 'edit']);
+Router::get('products/add', [ProductController::class, 'add']);
+Router::delete('products/delete', [ProductController::class, 'delete']);
+Router::post('products/insert', [ProductController::class, 'insert']);
+Router::put('products/put', [ProductController::class, 'put']);

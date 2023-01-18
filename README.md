@@ -15,3 +15,28 @@ composer dump-autoload
 ```shell
 composer create-project khamdullaevuz/mvc:dev-main
 ```
+## Configure
+### Make config
+```shell
+php do make:config
+```
+
+### Make controller
+```shell
+php do make:controller TestController
+```
+
+### Make model
+```shell
+php do make:model Test
+```
+
+### Run server
+#### with default port (8000)
+```shell
+php do serve
+```
+#### with custom port
+```shell
+php do serve 9000
+```

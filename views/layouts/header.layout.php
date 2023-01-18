@@ -21,7 +21,7 @@
           <a class="nav-link<?=Router::currentRoute('') ? ' active' : ''?>" aria-current="page" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link<?=Router::currentRoute('product') ? ' active' : ''?>" href="/product">Products</a>
+          <a class="nav-link<?=Router::currentRoute('products') ? ' active' : ''?>" href="/products">Products</a>
         </li>
         <li class="nav-item">
           <a class="nav-link<?=Router::currentRoute('about') ? ' active' : ''?>" href="/about">About</a>
