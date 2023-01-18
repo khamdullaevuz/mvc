@@ -36,7 +36,9 @@ php do make:model Test
 ```shell
 php do serve
 ```
+#### and visit [localhost:8000](http://localhost:8000)
 #### with custom port
 ```shell
 php do serve 9000
 ```
+#### and visit [localhost:9000](http://localhost:9000)
