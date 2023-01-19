@@ -1,10 +1,10 @@
 <?php
 
-class migration_2023_01_19_144327_create_users extends Migration
+class migration_2023_01_19_145421_create_products extends Migration
 {
     public function up()
         {
-            $this->create('{table_name}', [
+            $this->create('products', [
                 'id' => 'INT AUTO_INCREMENT PRIMARY KEY',
                 'name' => 'VARCHAR(255) NOT NULL',
                 'created_at' => 'DATETIME',
@@ -14,6 +14,6 @@ class migration_2023_01_19_144327_create_users extends Migration
 
     public function down()
     {
-        $this->drop('users');
+        $this->drop('products');
     }
 }
