@@ -42,7 +42,7 @@ if(mb_stripos($data, ":")!==false)
         require __DIR__.'/Core/Migration.php';
         $migration = new Migration();
         if($param == "up"){
-            if(!$migration->tableExists("migrations")){
+            if(!$migration->tableExist("migrations")){
                 $migration->create("migrations", [
                     "id" => "INT AUTO_INCREMENT PRIMARY KEY",
                     "name" => "VARCHAR(255)",

@@ -268,7 +268,7 @@ class Migration extends Connection
         static::$pdo->exec($sql);
     }
 
-    public function tableExists(string $table): bool
+    public function tableExist(string $table): bool
     {
         $sql = "SHOW TABLES LIKE '$table'";
         $result = static::$pdo->query($sql);
