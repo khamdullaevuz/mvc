@@ -3,14 +3,14 @@
 class {name} extends Migration
 {
     public function up()
-        {
-            $this->create('{table_name}', [
-                'id' => 'INT AUTO_INCREMENT PRIMARY KEY',
-                'name' => 'VARCHAR(255) NOT NULL',
-                'created_at' => 'DATETIME',
-                'updated_at' => 'DATETIME',
-            ]);
-        }
+    {
+        $this->create('{table_name}', [
+            'id' => 'INT AUTO_INCREMENT PRIMARY KEY',
+            'name' => 'VARCHAR(255) NOT NULL',
+            'created_at' => 'DATETIME',
+            'updated_at' => 'DATETIME',
+        ]);
+    }
 
     public function down()
     {
