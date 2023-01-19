@@ -10,7 +10,6 @@ class ProductController extends Controller
 {
     public function index(): void
     {
-//        $this->redirect("test");
         $product = new Product();
         $products = $product->selectAllData();
         $this->view('product/index', compact('products'));
