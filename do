@@ -1,4 +1,4 @@
-#!/usr/bin/php
+#!/usr/bin/env php
 <?php
 $data = $argv[1];
 if(mb_stripos($data, ":")!==false)
@@ -12,8 +12,11 @@ if(mb_stripos($data, ":")!==false)
         $dir = $param . "s";
         if($param == "config")
         {
-            if(!is_dir("config") and !file_exists("config/Core.php")){
+            if(!is_dir("config"))
+            {
                 mkdir("config");
+            }
+            if(!file_exists("config/Core.php")){
                 $dir = $param;
                 $name = "Core";
             }else{
