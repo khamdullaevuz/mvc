@@ -1,11 +1,12 @@
 <?php
 
-class {name} extends Migration
+class migration_2023_01_19_144327_create_users extends Migration
 {
     public function up()
         {
-            $this->create('{table_name}', [
+            $this->create('users', [
                 'id' => 'INT AUTO_INCREMENT PRIMARY KEY',
+                'name' => 'VARCHAR(255)',
                 'created_at' => 'DATETIME',
                 'updated_at' => 'DATETIME',
             ]);
@@ -13,6 +14,6 @@ class {name} extends Migration
 
     public function down()
     {
-        $this->drop('{table_name}');
+        $this->drop('users');
     }
 }

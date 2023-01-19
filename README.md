@@ -31,6 +31,21 @@ php do make:controller TestController
 php do make:model Test
 ```
 
+### Make migration
+```shell
+php do make:migration Products
+```
+
+### Migration up
+```shell
+php do migrate:up
+```
+
+### Migration down
+```shell
+php do migrate:down
+```
+
 ### Run server
 #### with default port (8000)
 ```shell
