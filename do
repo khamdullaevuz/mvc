@@ -19,15 +19,64 @@ if(mb_stripos($data, ":")!==false)
             if(!file_exists("config/Core.php")){
                 $dir = $param;
                 $name = "Core";
+                $filename = $name;
             }else{
                 die("Config already maked!");
             }
+        }elseif($param == "migration")
+        {
+            $filename = "migration_" . date("Y_m_d_His") . "_create_" . strtolower($name);
+            $name = strtolower($name);
         }
         $param = ucfirst($param);
         if(!$name) $name = $param;
+        if(!$filename) $filename = $name;
         $data = file_get_contents("stubs/" . $param . ".stub");
-        $data = str_replace("{name}", $name, $data);
-        file_put_contents($dir . "/" . $name . ".php", $data);
+        $data = str_replace(["{name}", "{table_name}"], [$filename, $name], $data);
+        file_put_contents($dir . "/" . $filename . ".php", $data);
+    }elseif($method == "migrate")
+    {
+        if($param == "up"){
+            require __DIR__.'/config/Core.php';
+            require __DIR__.'/Core/Connection.php';
+            require __DIR__.'/Core/Migration.php';
+            $migration = new Migration();
+            if(!$migration->tableExists("migrations")){
+                $migration->create("migrations", [
+                    "id" => "INT AUTO_INCREMENT PRIMARY KEY",
+                    "name" => "VARCHAR(255)",
+                    "batch" => "INT",
+                    "created_at" => "DATETIME",
+                    "updated_at" => "DATETIME",
+                ]);
+            }
+            $migrations = glob("migrations/*.php");
+            $batch = $migration->getBatch();
+            $migrations_count = count($migrations);
+            foreach($migrations as $migrationFile)
+            {
+                if($migrations_count == $migration->migrationCount())
+                {
+                    die("All migrations are already migrated!");
+                }
+                require $migrationFile;
+                $migrationName = str_replace("migrations/", "", $migrationFile);
+                $migrationName = str_replace(".php", "", $migrationName);
+                if($migration->checkMigrationExists($migrationName)) {
+                    printf("Migration %s is started!\n", $migrationName);
+                    call_user_func([new $migrationName, "up"]);
+                    $migration->add("migrations", [
+                        "name" => $migrationName,
+                        "batch" => $batch,
+                        "created_at" => date("Y-m-d H:i:s"),
+                        "updated_at" => date("Y-m-d H:i:s"),
+                    ]);
+                    printf("Migration %s is migrated successfully!\n", $migrationName);
+                }
+            }
+        }elseif($param == "down"){
+            die("Migrate down");
+        }
     }
 }else{
     $method = $data;

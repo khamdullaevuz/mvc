@@ -1,0 +1,15 @@
+<?php
+
+class {name} extends Migration
+{
+    public function up()
+    {
+        $this->create('{table_name}', [
+        ]);
+    }
+
+    public function down()
+    {
+        $this->drop('{table_name}');
+    }
+}
