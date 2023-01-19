@@ -20,6 +20,7 @@ composer create-project khamdullaevuz/mvc:dev-main
 ```shell
 php do make:config
 ```
+#### and change config file `config/Core.php`
 
 ### Make controller
 ```shell

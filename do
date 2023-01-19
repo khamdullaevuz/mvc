@@ -34,6 +34,7 @@ if(mb_stripos($data, ":")!==false)
         $data = file_get_contents("stubs/" . $param . ".stub");
         $data = str_replace(["{name}", "{table_name}"], [$filename, $name], $data);
         file_put_contents($dir . "/" . $filename . ".php", $data);
+        echo "Created " . $dir . "/" . $filename . ".php" . PHP_EOL;
     }elseif($method == "migrate")
     {
         require __DIR__.'/config/Core.php';

@@ -4,9 +4,9 @@ class migration_2023_01_19_144327_create_users extends Migration
 {
     public function up()
         {
-            $this->create('users', [
+            $this->create('{table_name}', [
                 'id' => 'INT AUTO_INCREMENT PRIMARY KEY',
-                'name' => 'VARCHAR(255)',
+                'name' => 'VARCHAR(255) NOT NULL',
                 'created_at' => 'DATETIME',
                 'updated_at' => 'DATETIME',
             ]);
