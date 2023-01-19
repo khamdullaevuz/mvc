@@ -36,11 +36,11 @@ if(mb_stripos($data, ":")!==false)
         file_put_contents($dir . "/" . $filename . ".php", $data);
     }elseif($method == "migrate")
     {
+        require __DIR__.'/config/Core.php';
+        require __DIR__.'/Core/Connection.php';
+        require __DIR__.'/Core/Migration.php';
+        $migration = new Migration();
         if($param == "up"){
-            require __DIR__.'/config/Core.php';
-            require __DIR__.'/Core/Connection.php';
-            require __DIR__.'/Core/Migration.php';
-            $migration = new Migration();
             if(!$migration->tableExists("migrations")){
                 $migration->create("migrations", [
                     "id" => "INT AUTO_INCREMENT PRIMARY KEY",
@@ -63,7 +63,7 @@ if(mb_stripos($data, ":")!==false)
                 $migrationName = str_replace("migrations/", "", $migrationFile);
                 $migrationName = str_replace(".php", "", $migrationName);
                 if($migration->checkMigrationExists($migrationName)) {
-                    printf("Migration %s is started!\n", $migrationName);
+                    printf("Migration %s up is started!\n", $migrationName);
                     call_user_func([new $migrationName, "up"]);
                     $migration->add("migrations", [
                         "name" => $migrationName,
@@ -71,11 +71,22 @@ if(mb_stripos($data, ":")!==false)
                         "created_at" => date("Y-m-d H:i:s"),
                         "updated_at" => date("Y-m-d H:i:s"),
                     ]);
-                    printf("Migration %s is migrated successfully!\n", $migrationName);
+                    printf("Migration %s up is migrated successfully!\n", $migrationName);
                 }
             }
         }elseif($param == "down"){
-            die("Migrate down");
+            $batch = $migration->selectLastBatch();
+            if(!$batch) die("No migration to rollback!");
+            $migrations = $migration->selectByBatch($batch);
+            foreach($migrations as $migrationName)
+            {
+                $name = $migrationName["name"];
+                require "migrations/" . $name . ".php";
+                printf("Migration %s down is started!\n", $name);
+                call_user_func([new $name, "down"]);
+                $migration->delete("migrations", $name);
+                printf("Migration %s down is migrated successfully!\n", $name);
+            }
         }
     }
 }else{

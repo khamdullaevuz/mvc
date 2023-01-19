@@ -21,6 +21,12 @@ class Migration extends Connection
         return parent::$pdo->lastInsertId();
     }
 
+    public function delete($table, $name)
+    {
+        $query = "DELETE FROM {$table} WHERE name = '{$name}'";
+        parent::$pdo->prepare($query)->execute();
+    }
+
     /**
      * @param array $data
      * @param string $query
@@ -47,6 +53,16 @@ class Migration extends Connection
     public function migrationCount()
     {
         return static::$pdo->query("SELECT * FROM migrations")->rowCount();
+    }
+
+    public function selectLastBatch()
+    {
+        return static::$pdo->query("SELECT * FROM migrations ORDER BY batch DESC LIMIT 1")->fetch(PDO::FETCH_ASSOC)['batch'];
+    }
+
+    public function selectByBatch($batch)
+    {
+        return static::$pdo->query("SELECT * FROM migrations WHERE batch = $batch")->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function checkMigrationExists($name)
