@@ -67,7 +67,7 @@ if(mb_stripos($data, ":")!==false)
                 require $migrationFile;
                 $migrationName = str_replace("migrations/", "", $migrationFile);
                 $migrationName = str_replace(".php", "", $migrationName);
-                if($migration->checkMigrationExists($migrationName)) {
+                if($migration->checkMigrationExist($migrationName)) {
                     printf("Migration %s up is started!\n", $migrationName);
                     call_user_func([new $migrationName, "up"]);
                     $migration->add("migrations", [

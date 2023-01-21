@@ -65,7 +65,7 @@ class Migration extends Connection
         return static::$pdo->query("SELECT * FROM migrations WHERE batch = $batch")->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function checkMigrationExists($name)
+    public function checkMigrationExist($name): bool
     {
         return static::$pdo->query("SELECT * FROM migrations WHERE name = '$name'")->rowCount() == 0;
     }
