@@ -1,6 +1,10 @@
 #!/usr/bin/env php
 <?php
 $data = $argv[1];
+if(!$data)
+{
+    die("make:config - making config\nmake:controller {name} - making controller\nmake:model {name} - making model\nmake:migration {name}\nmigrate:up - up migrate\nmigrate:down - down migrate");
+}
 if(mb_stripos($data, ":")!==false)
 {
     $value = explode(":", $data);
