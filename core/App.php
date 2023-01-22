@@ -20,7 +20,7 @@ class App{
                     } else {
                         $controllerName = $route;
                         $controller = new $controllerName();
-                        call_user_func_array([$controller, '__invoke'], Request::getParams());
+                        call_user_func_array($controller, Request::getParams());
                     }
                     Http::responseCode(200);
                 } catch (Error $e){
