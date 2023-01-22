@@ -1,6 +1,6 @@
 <?php
 
-class Router
+final class Router
 {
     private static array $routes = [];
 

@@ -1,6 +1,6 @@
 <?php
 
-class App{
+final class App{
     private bool $debug = false;
 
     function run(): void
