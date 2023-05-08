@@ -3,7 +3,7 @@
 final class App{
     private bool $debug = false;
 
-    function run(): void
+    public function run(): void
     {
         $routes = Router::routeAll();
         $request = Request::getRequestUrl();
