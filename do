@@ -23,12 +23,12 @@ if (mb_stripos($data, ":") !== false) {
                 die("Config already maked!");
             }
         } elseif ($param == "migration") {
-            $filename = "migration_" . date("Y_m_d_His") . "_create_" . strtolower($name);
-            $name = strtolower($name);
+            $name = strtolower($name) . 's';
+            $filename = "migration_" . date("Y_m_d_His") . "_create_" . $name;
         }
         $param = ucfirst($param);
-        if (!$name) $name = $param;
-        if (!$filename) $filename = $name;
+        if (!isset($name)) $name = $param;
+        if (!isset($filename)) $filename = $name;
         $data = file_get_contents("stubs/" . $param . ".stub");
         $data = str_replace(["{name}", "{table_name}"], [$filename, $name], $data);
         file_put_contents($dir . "/" . $filename . ".php", $data);
