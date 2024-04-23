@@ -37,6 +37,10 @@ abstract class Model extends Connection
 
     public function add(array $values)
     {
+        if (!array_key_exists('created_at', $values))
+            $values['created_at'] = date('Y-m-d H:i:s');
+        if (!array_key_exists('updated_at', $values))
+            $values['updated_at'] = date('Y-m-d H:i:s');
         $query = "INSERT INTO {$this->table} ({keys}) VALUES ({values})";
         $query = $this->generateKey($values, $query);
         parent::$pdo->prepare($query)->execute($values);
@@ -45,6 +49,8 @@ abstract class Model extends Connection
 
     public function update(array $values, array $where): void
     {
+        if (!array_key_exists('updated_at', $values))
+            $values['updated_at'] = date('Y-m-d H:i:s');
         $query = "UPDATE {$this->table} SET {keys} WHERE {where}";
         $query = $this->generateForKeyUpdate($values, $query);
         $query = $this->generateParam($where, $query);
@@ -107,7 +113,7 @@ abstract class Model extends Connection
     {
         $keys = "";
         foreach (array_keys($data) as $key) {
-            $keys .= $key . ' = ' . ':' . $key .',';
+            $keys .= $key . ' = ' . ':' . $key . ',';
         }
         $keys = mb_substr($keys, 0, -1);
         return str_replace("{keys}", $keys, $query);

@@ -2,7 +2,7 @@
 <?php
 $data = $argv[1] ?? null;
 if (!$data) {
-    die("make:config - making config\nmake:controller {name} - making controller\nmake:model {name} - making model\nmake:migration {name}\nmigrate:up - up migrate\nmigrate:down - down migrate");
+    die("make:config - making config\nmake:controller {name} - making controller\nmake:model {name} - making model\nmake:migration {name}\nmigrate:up - up migrate\nmigrate:down - down migrate\nserve - serve application\nserve {port} - serve application with custom port");
 }
 if (mb_stripos($data, ":") !== false) {
     $value = explode(":", $data);
